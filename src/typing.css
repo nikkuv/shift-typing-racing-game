@@ -1,0 +1,22 @@
+.typing-surface{position:relative;padding:27px 26px 20px;--flow-line:42px;--flow-size:23px}
+.flow-viewport{height:calc(var(--flow-line) * 3);overflow:hidden;contain:layout paint;cursor:text;position:relative;touch-action:manipulation}
+.flow-words{position:relative;font-family:'IBM Plex Mono',monospace;font-size:var(--flow-size);font-weight:400;line-height:var(--flow-line);letter-spacing:0;font-variant-ligatures:none;color:#767286;will-change:transform;user-select:none}
+.flow-word{display:inline-block;white-space:pre}
+.flow-letter{display:inline-block}
+.flow-letter.is-correct{color:#eeeaf6}
+.flow-letter.is-error{color:#ff6f93;background:#ff527b15;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+.flow-letter.is-selected{background:#a77aff40}
+.flow-end{display:inline-block;width:0}
+.flow-caret{position:absolute;top:0;left:-1px;width:2px;border-radius:2px;background:#bc90ff;box-shadow:0 0 9px #ab72ff55;will-change:transform;pointer-events:none;opacity:0}
+.is-focused .flow-caret{opacity:1;animation:flow-blink 1s ease-in-out infinite}
+.is-focused .flow-caret.is-moving{animation:none;opacity:1}
+.flow-input{position:absolute;left:26px;top:27px;width:1px;height:1px;padding:0;border:0;opacity:0;resize:none;font-size:16px;pointer-events:none;caret-color:transparent}
+.typing-surface.is-enabled:not(.is-focused) .flow-words{filter:blur(3px);opacity:.45}
+.flow-focus{position:absolute;inset:0;margin:auto;width:max-content;max-width:90%;height:44px;padding:0 20px;border:1px solid #554269;border-radius:8px;background:#191320ef;color:#e7dcf6;font:500 13px 'DM Sans',sans-serif;cursor:pointer}
+.flow-focus span{color:#a59aae;margin-left:7px}
+.flow-focus:hover{background:#271c35;border-color:#b087e8}
+.flow-focus:focus-visible{outline:2px solid #bc90ff;outline-offset:4px}
+.flow-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@keyframes flow-blink{0%,40%,100%{opacity:1}65%,85%{opacity:0}}
+@media(max-width:700px){.typing-surface{padding:22px 18px 16px;--flow-size:20px;--flow-line:37px}.flow-input{left:18px;top:22px}.flow-focus span{display:none}}
+@media(prefers-reduced-motion:reduce){.flow-words,.flow-caret{transition:none!important}.is-focused .flow-caret{animation:none}}
